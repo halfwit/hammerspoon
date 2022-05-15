@@ -24,7 +24,7 @@ hs.execute('echo !yt | ' .. dctl .. ' -t search add')
 hs.execute('echo !g | ' .. dctl .. ' -t search add')
 hs.execute('echo !s | ' .. dctl .. ' -t search add')
 hs.execute('echo !w | ' .. dctl .. ' -t search add')
--- You can't escape your fate, but you can escape a command! What a nightmare.
+-- You can't escape your fate, but you can escape a command! What a nightmare. Update the sed command if you wish to not see the leading /path/elements from your workstation
 hs.execute('/usr/bin/find ' .. os.getenv("HOME") .. WORKDIR .. ' -type f -not -path "*/node_modules*" -not -path "*/\\.git*" | /usr/bin/sed "s|/Users/halfwit/|~/|" | ' .. dctl .. ' -t search add')
 
 function dsearch()
