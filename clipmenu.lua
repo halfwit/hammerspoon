@@ -1,5 +1,6 @@
 hs.loadSpoon('TextClipboardHistory')
 
+-- TODO: Remove need for textclipboardhistory
 -- Configurations
 spoon.TextClipboardHistory.show_in_menubar = false
 spoon.TextClipboardHistory.frequency = 1.8
