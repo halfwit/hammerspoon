@@ -1,24 +1,30 @@
--- Stash windows in a table, refer to table to show/hide windows
--- Window filter watches for creation/deletion, to keep our windows object correct
+--- === WindowManagement ===
+---
+--- Allow window tagging/grouping for macOS
+---
+--- Download: [https://github.com/halfwit/hammerspoon/raw/master/Spoons/WindowManagement.spoon.zip](https://github.com/halfwit/hammerspoon/raw/master/hammerspoon/WindowManagement.spoon.zip)
+
 
 local obj={}
 obj.__index = obj
 
--- Metadata
+--- Metadata
 obj.name = "WindowManagement"
 obj.version = "0.1"
+obj.author = "Michael Misch <michaelmisch1985@gmail.com>"
+obj.license = "MIT - https://opensource.org/licenses/MIT"
 
 local getSetting = function(label, default) return hs.settings.get(obj.name.."."..label) or default end
 local setSetting = function(label, value)   hs.settings.set(obj.name.."."..label, value); return value end
 
--- windowManagement.groupCount
--- Variable
--- The amount of groups/tags to assign
+--- windowManagement.groupCount
+--- Variable
+--- The amount of groups/tags to assign
 obj.group_count = 6
 
--- WindowManagement.showHints
--- Variable
--- If true, populate the titlebar with group hints
+--- WindowManagement.showHints
+--- Variable
+--- If true, populate the titlebar with group hints
 obj.show_in_menubar = false
 
 -- Internal table to track the available windows
@@ -61,15 +67,15 @@ function obj:_updateMenuBar()
     end
 end
 
--- WindowManagement:toggleGroup(group)
--- Method
--- Toggle the visibility of the given group
---
--- Parameters:
---  * group - Group ID
---
--- Returns:
---  * None
+--- WindowManagement:toggleGroup(group)
+--- Method
+--- Toggle the visibility of the given group
+---
+--- Parameters:
+---  * group - Group ID
+---
+--- Returns:
+---  * None
 function obj:toggleGroup(group)
     -- Toggle the state of the given group
     if obj._groups[group].state == "visible" then
@@ -86,15 +92,15 @@ function obj:toggleGroup(group)
     obj._updateMenuBar()
 end
 
--- WindowManagement:assignGroup(group)
--- Method
--- Add the focused window to given group
---
--- Parameters:
---  * group - the group to assign focused window to
---
--- Returns:
---  * None
+--- WindowManagement:assignGroup(group)
+--- Method
+--- Add the focused window to given group
+---
+--- Parameters:
+---  * group - the group to assign focused window to
+---
+--- Returns:
+---  * None
 function obj:assignGroup(group)
     window = hs.window.frontmostWindow()
     
@@ -114,9 +120,9 @@ function obj:assignGroup(group)
     obj._updateMenuBar()
 end
 
--- WindowManagement:start()
--- Method
--- Start the window management
+--- WindowManagement:start()
+--- Method
+--- Start the window management
 function obj:start()
     obj._wf = hs.window.filter.new()
     obj.logger = hs.logger.new('WM', 'debug')
@@ -133,9 +139,9 @@ function obj:start()
         end
 
         if event == 'windowCreated' then
-            obj.logger.i(name)
             for k, v in pairs(obj.autoTags) do
                 if name == k then
+                    obj.logger.i('Setting ' .. name .. ' to group ' .. k)
                     table.insert(obj._groups[v].windows, incoming)
                     obj._groups[v].state = "visible"
                     obj._updateMenuBar()
@@ -161,6 +167,16 @@ function obj:start()
         end
     end
     obj._updateMenuBar()
+end
+
+function obj:stop()
+    obj._wf:unsubscribeAll()
+    obj._groups = {}
+    if obj.show_in_menubar then
+        for i = 1, obj.group_count do
+            obj._menuBar[i]:delete()
+        end
+    end
 end
 
 return obj
