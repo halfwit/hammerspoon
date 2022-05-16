@@ -8,7 +8,7 @@
 local obj={}
 obj.__index = obj
 
---- Metadata
+-- Metadata
 obj.name = "WindowManagement"
 obj.version = "0.1"
 obj.author = "Michael Misch <michaelmisch1985@gmail.com>"
@@ -17,14 +17,14 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 local getSetting = function(label, default) return hs.settings.get(obj.name.."."..label) or default end
 local setSetting = function(label, value)   hs.settings.set(obj.name.."."..label, value); return value end
 
---- windowManagement.groupCount
+--- WindowManagement.group_count
 --- Variable
---- The amount of groups/tags to assign
+--- the amount of groups/tags to assign
 obj.group_count = 6
 
 --- WindowManagement.showHints
 --- Variable
---- If true, populate the titlebar with group hints
+--- if true, populate the titlebar with group hints
 obj.show_in_menubar = false
 
 -- Internal table to track the available windows

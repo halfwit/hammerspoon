@@ -1,0 +1,246 @@
+[
+  {
+    "Constant" : [
+
+    ],
+    "submodules" : [
+
+    ],
+    "Function" : [
+
+    ],
+    "Variable" : [
+      {
+        "doc" : "the amount of groups\/tags to assign",
+        "stripped_doc" : [
+          "the amount of groups\/tags to assign"
+        ],
+        "def" : "WindowManagement.group_count",
+        "name" : "group_count",
+        "notes" : [
+
+        ],
+        "signature" : "WindowManagement.group_count",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "desc" : "the amount of groups\/tags to assign",
+        "parameters" : [
+
+        ]
+      },
+      {
+        "doc" : "if true, populate the titlebar with group hints",
+        "stripped_doc" : [
+          "if true, populate the titlebar with group hints"
+        ],
+        "def" : "WindowManagement.showHints",
+        "name" : "showHints",
+        "notes" : [
+
+        ],
+        "signature" : "WindowManagement.showHints",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "desc" : "if true, populate the titlebar with group hints",
+        "parameters" : [
+
+        ]
+      }
+    ],
+    "stripped_doc" : [
+
+    ],
+    "Deprecated" : [
+
+    ],
+    "desc" : "Allow window tagging\/grouping for macOS",
+    "type" : "Module",
+    "Constructor" : [
+
+    ],
+    "doc" : "Allow window tagging\/grouping for macOS\n\nDownload: [https:\/\/github.com\/halfwit\/hammerspoon\/raw\/master\/Spoons\/WindowManagement.spoon.zip](https:\/\/github.com\/halfwit\/hammerspoon\/raw\/master\/hammerspoon\/WindowManagement.spoon.zip)",
+    "Method" : [
+      {
+        "doc" : "Toggle the visibility of the given group\n\nParameters:\n * group - Group ID\n\nReturns:\n * None",
+        "stripped_doc" : [
+          "Toggle the visibility of the given group",
+          ""
+        ],
+        "def" : "WindowManagement:toggleGroup(group)",
+        "name" : "toggleGroup",
+        "notes" : [
+
+        ],
+        "signature" : "WindowManagement:toggleGroup(group)",
+        "type" : "Method",
+        "returns" : [
+          " * None"
+        ],
+        "desc" : "Toggle the visibility of the given group",
+        "parameters" : [
+          " * group - Group ID",
+          ""
+        ]
+      },
+      {
+        "doc" : "Add the focused window to given group\n\nParameters:\n * group - the group to assign focused window to\n\nReturns:\n * None",
+        "stripped_doc" : [
+          "Add the focused window to given group",
+          ""
+        ],
+        "def" : "WindowManagement:assignGroup(group)",
+        "name" : "assignGroup",
+        "notes" : [
+
+        ],
+        "signature" : "WindowManagement:assignGroup(group)",
+        "type" : "Method",
+        "returns" : [
+          " * None"
+        ],
+        "desc" : "Add the focused window to given group",
+        "parameters" : [
+          " * group - the group to assign focused window to",
+          ""
+        ]
+      },
+      {
+        "doc" : "Start the window management",
+        "stripped_doc" : [
+          "Start the window management"
+        ],
+        "def" : "WindowManagement:start()",
+        "name" : "start",
+        "notes" : [
+
+        ],
+        "signature" : "WindowManagement:start()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Start the window management",
+        "parameters" : [
+
+        ]
+      }
+    ],
+    "Command" : [
+
+    ],
+    "Field" : [
+
+    ],
+    "items" : [
+      {
+        "doc" : "the amount of groups\/tags to assign",
+        "stripped_doc" : [
+          "the amount of groups\/tags to assign"
+        ],
+        "def" : "WindowManagement.group_count",
+        "name" : "group_count",
+        "notes" : [
+
+        ],
+        "signature" : "WindowManagement.group_count",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "desc" : "the amount of groups\/tags to assign",
+        "parameters" : [
+
+        ]
+      },
+      {
+        "doc" : "if true, populate the titlebar with group hints",
+        "stripped_doc" : [
+          "if true, populate the titlebar with group hints"
+        ],
+        "def" : "WindowManagement.showHints",
+        "name" : "showHints",
+        "notes" : [
+
+        ],
+        "signature" : "WindowManagement.showHints",
+        "type" : "Variable",
+        "returns" : [
+
+        ],
+        "desc" : "if true, populate the titlebar with group hints",
+        "parameters" : [
+
+        ]
+      },
+      {
+        "doc" : "Add the focused window to given group\n\nParameters:\n * group - the group to assign focused window to\n\nReturns:\n * None",
+        "stripped_doc" : [
+          "Add the focused window to given group",
+          ""
+        ],
+        "def" : "WindowManagement:assignGroup(group)",
+        "name" : "assignGroup",
+        "notes" : [
+
+        ],
+        "signature" : "WindowManagement:assignGroup(group)",
+        "type" : "Method",
+        "returns" : [
+          " * None"
+        ],
+        "desc" : "Add the focused window to given group",
+        "parameters" : [
+          " * group - the group to assign focused window to",
+          ""
+        ]
+      },
+      {
+        "doc" : "Start the window management",
+        "stripped_doc" : [
+          "Start the window management"
+        ],
+        "def" : "WindowManagement:start()",
+        "name" : "start",
+        "notes" : [
+
+        ],
+        "signature" : "WindowManagement:start()",
+        "type" : "Method",
+        "returns" : [
+
+        ],
+        "desc" : "Start the window management",
+        "parameters" : [
+
+        ]
+      },
+      {
+        "doc" : "Toggle the visibility of the given group\n\nParameters:\n * group - Group ID\n\nReturns:\n * None",
+        "stripped_doc" : [
+          "Toggle the visibility of the given group",
+          ""
+        ],
+        "def" : "WindowManagement:toggleGroup(group)",
+        "name" : "toggleGroup",
+        "notes" : [
+
+        ],
+        "signature" : "WindowManagement:toggleGroup(group)",
+        "type" : "Method",
+        "returns" : [
+          " * None"
+        ],
+        "desc" : "Toggle the visibility of the given group",
+        "parameters" : [
+          " * group - Group ID",
+          ""
+        ]
+      }
+    ],
+    "name" : "WindowManagement"
+  }
+]
