@@ -26,7 +26,7 @@ hs.hotkey.bind('leftCmd', 'l', hs.window.filter.focusEast)
 hs.hotkey.bind('leftCmd', 'h', hs.window.filter.focusWest)
 hs.hotkey.bind('leftCmd', 'j', hs.window.filter.focusSouth)
 hs.hotkey.bind('leftCmd', 'k', hs.window.filter.focusNorth)
-for i = 1,  5do
+for i = 1, 5 do
   key = tostring(i)
   hs.hotkey.bind('leftCmd', key, function()
     toggleGroup(i)
