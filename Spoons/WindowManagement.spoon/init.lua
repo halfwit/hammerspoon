@@ -91,6 +91,16 @@ end
 --  * None
 function obj:assignGroup(group)
     window = hs.window.frontmostWindow()
+    
+    -- Check if window exists in other groups and remove
+    for i, group in ipairs(obj._groups) do
+        for j, win in ipairs(group.windows) do
+            if win:id() == window:id() then
+                table.remove(obj._groups[i].windows, j)
+            end
+        end
+    end
+
     table.insert(obj._groups[group].windows, window)
     -- Subsequent toggles will hide the new window, and not bring up any others in group
     -- this is expected behaviour
