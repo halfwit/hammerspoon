@@ -27,6 +27,12 @@ obj._groups = {}
 -- Internal table to track menubar entries
 obj._menuBar = {}
 
+obj.autoTags = {
+    ["Safari"] = 2,
+    ["Visual Studio Code"] = 3,
+    ["Spotify"] = 4,
+}
+
 local _groupEmptyText = hs.styledtext.new("⊖", { 
     size = 16
 })
@@ -113,6 +119,7 @@ end
 -- Start the window management
 function obj:start()
     obj._wf = hs.window.filter.new()
+    obj.logger = hs.logger.new('WM', 'debug')
     local cb = function(incoming, name, event)
         if event == 'windowDestroyed' then
             for i, group in ipairs(obj._groups) do
@@ -124,10 +131,24 @@ function obj:start()
                 end
             end
         end
+
+        if event == 'windowCreated' then
+            obj.logger.i(name)
+            for k, v in pairs(obj.autoTags) do
+                if name == k then
+                    table.insert(obj._groups[v].windows, incoming)
+                    obj._groups[v].state = "visible"
+                    obj._updateMenuBar()
+                end
+            end
+        end
     end
 
     -- We don't seem to get the events in scope otherwise
-    obj._wf:subscribe(hs.window.filter.windowDestroyed, cb)
+    obj._wf:subscribe({
+        hs.window.filter.windowDestroyed,
+        hs.window.filter.windowCreated,
+    }, cb)
 
     -- Initialize the groups table that we update
     for i = 1, obj.group_count do

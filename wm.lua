@@ -2,6 +2,16 @@ hs.loadSpoon('WindowManagement')
 
 spoon.WindowManagement.group_count = 5
 spoon.WindowManagement.show_in_menubar = true
+spoon.WindowManagement.autoTags = {
+    ["Messages"] = 5,
+    ["Element"] = 5,
+    ["Mail"] = 5,
+    ["Safari"] = 2,
+    ["Chrome"] = 2,
+    ["Code"] = 3,
+    ["Spotify"] = 4,
+    ["Terminal"] = 1,
+}
 spoon.WindowManagement:start()
 
 function toggleGroup(gid)
