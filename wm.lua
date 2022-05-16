@@ -1,6 +1,6 @@
 hs.loadSpoon('WindowManagement')
 
-spoon.WindowManagement.group_count = 6
+spoon.WindowManagement.group_count = 5
 spoon.WindowManagement.show_in_menubar = true
 spoon.WindowManagement:start()
 
