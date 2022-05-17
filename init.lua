@@ -39,14 +39,11 @@ end
 
 -- Terminal
 hs.hotkey.bind('leftCmd', 't', function()
-  hs.execute('/usr/bin/open -a Terminal')
+  hs.application.open("Terminal")
 end)
 
 require('dmenu')
 hs.hotkey.bind('leftCmd', 'd', dmenu)
-
-require('clipmenu')
-hs.hotkey.bind('leftCmd', 'v', clipmenu)
 
 require('dsearch')
 hs.hotkey.bind('leftCmd', 'n', dsearch) 

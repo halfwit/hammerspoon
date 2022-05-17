@@ -82,11 +82,13 @@ function obj:toggleGroup(group)
         obj._groups[group].state = "hidden"
         for i, win in ipairs(obj._groups[group].windows) do
             win:minimize()
+            hs.window:frontmostWindow():focus()
         end
     else
         obj._groups[group].state = "visible"
         for i, win in ipairs(obj._groups[group].windows) do
             win:unminimize()
+            win:focus()
         end
     end
     obj._updateMenuBar()
