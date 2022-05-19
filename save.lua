@@ -25,11 +25,11 @@ function save()
             hs.timer.doAfter(1, function()
                 local line = hs.pasteboard.getContents()
                 -- Assumes the plumber has matches for src is save
-                hs.execute('echo ' .. line .. ' | ' .. plumb .. ' -s save -')
+                local plumb = io.popen(plumb .. ' -s save -', 'w')
+                plumb:write(line .. '\n')
+                plumb:flush()
+                plumb:close()
                 -- Clear out our new clip contents
-                if hs.spoons.isLoaded('TextClipboardHistory') then
-                    spoon.TextClipboardHistory:clearLastItem()                
-                end
                 hs.pasteboard.setContents(old)
             end)
         end

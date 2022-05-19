@@ -138,12 +138,13 @@ function obj:start()
                     end
                 end
             end
+            
         end
 
         if event == 'windowCreated' then
             for k, v in pairs(obj.autoTags) do
                 if name == k then
-                    obj.logger.i('Setting ' .. name .. ' to group ' .. k)
+                    obj.logger.i('Automatically setting ' .. name .. ' to group ' .. v)
                     table.insert(obj._groups[v].windows, incoming)
                     obj._groups[v].state = "visible"
                     obj._updateMenuBar()

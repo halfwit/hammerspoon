@@ -11,6 +11,7 @@ spoon.WindowManagement.autoTags = {
     ["Code"] = 3,
     ["Spotify"] = 4,
     ["Terminal"] = 1,
+    ["Kindle"] = 4,
 }
 spoon.WindowManagement:start()
 
