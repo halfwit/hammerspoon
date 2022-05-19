@@ -1,5 +1,4 @@
 -----------------------------------------------------
--- requires https://github.com/chipsenkbeil/choose --
 -- requires https://github.com/halfwit/demun       --
 -----------------------------------------------------
 
@@ -7,20 +6,22 @@
 local dctl = hs.execute('which dctl', true):gsub("%s+", " ")
 local choose = hs.execute('which choose', true):gsub("%s+", " ")
 
--- Write entries to demun for exec tag
-hs.execute('/bin/zsh -c "whence -pm \'*\'" | ' ..dctl.. ' -t exec add')
-
 -- Loop through each item in the system profiler, and add to list
-local applist = io.popen('/usr/sbin/system_profiler SPApplicationsDataType | sed -n "s|^    \\([A-Z].*\\):|\\1|p"')
 local cmdin = io.popen(dctl .. ' -t exec add ', 'w')
-
+local applist = io.popen('/usr/sbin/system_profiler SPApplicationsDataType | sed -n "s|^    \\([A-Z].*\\):|\\1|p"')
 for line in applist:lines() do
+  cmdin:write(line .. '\n')
+end
+
+local binlist = io.popen('/bin/zsh -c "whence -pm \'*\'"')
+for line in binlist:lines() do
   cmdin:write(line .. '\n')
 end
 
 -- clean up
 cmdin:flush()
 cmdin:close()
+binlist:close()
 applist:close()
 
 function _load()
