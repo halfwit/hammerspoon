@@ -3,18 +3,11 @@
 -------------------
 hs.window.animationDuration = 0
 
--------------
--- daemons --
--------------
-local demun = hs.execute('which demun', true):gsub("%s+", " ")
-os.execute('/usr/bin/pkill demun')
-os.execute(demun .. ' &')
-
 --------------
 -- Keybinds --
 --------------
--- Close window - overrides copy
-hs.hotkey.bind('leftCmd', 'c', function()
+-- Close window
+hs.hotkey.bind('leftCmd', 'w', function()
   local window = hs.window.frontmostWindow()
   window:close()
 end)
@@ -44,9 +37,11 @@ end)
 -- Launchers/Plumbers
 require('dmenu')
 hs.hotkey.bind('leftCmd', 'd', dmenu)
+hs.hotkey.bind('leftCmd shift', 'd', reload_dmenu)
 
 require('dsearch')
-hs.hotkey.bind('leftCmd', 'n', dsearch) 
+hs.hotkey.bind('leftCmd', 'n', dsearch)
+hs.hotkey.bind('leftCmd shift', 'n', reload_dsearch)
 
 require('save')
 hs.hotkey.bind('leftCmd', 's', save)
