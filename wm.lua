@@ -22,3 +22,17 @@ end
 function assignGroup(gid)
     spoon.WindowManagement:assignGroup(gid)
 end
+
+function increaseWindow()
+    local window = hs.window.frontmostWindow()
+    local size = window:size()
+    size.w = size.w + 8
+    window:setSize(size)
+end
+
+function decreaseWindow()
+    local window = hs.window.frontmostWindow()
+    local size = window:size()
+    size.w = size.w - 8
+    window:setSize(size)
+end

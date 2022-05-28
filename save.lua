@@ -1,15 +1,22 @@
 -----------------------------------------------------
 -- requires https://github.com/chipsenkbeil/choose --
--- requires https://9fans.github.io.plan9port      --
+-- requires https://9fans.github.io/plan9port      --
 -- More information:                               --
 --   https://halfwit.github.io/searching.html      --
 -----------------------------------------------------
 
-
 -- Stash our plumb binary location
-local plumb = hs.execute('which plumb', true):gsub("%s+", " ")
+local plumbcmd = hs.execute('which plumb', true):gsub("%s+", " ")
 
 function save()
+    _run(' -t save -i')
+end
+
+function plumb()
+    _run(' -i')
+end
+
+function _run(flags)
     -- Stash the old entry
     local old = hs.pasteboard.getContents()
     local application = hs.application.frontmostApplication()
@@ -25,7 +32,7 @@ function save()
             hs.timer.doAfter(1, function()
                 local line = hs.pasteboard.getContents()
                 -- Assumes the plumber has matches for src is save
-                local plumb = io.popen(plumb .. ' -s save -', 'w')
+                local plumb = io.popen(plumbcmd .. flags, 'w')
                 plumb:write(line .. '\n')
                 plumb:flush()
                 plumb:close()

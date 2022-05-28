@@ -18,6 +18,8 @@ hs.hotkey.bind('leftCmd', 'l', hs.window.filter.focusEast)
 hs.hotkey.bind('leftCmd', 'h', hs.window.filter.focusWest)
 hs.hotkey.bind('leftCmd', 'j', hs.window.filter.focusSouth)
 hs.hotkey.bind('leftCmd', 'k', hs.window.filter.focusNorth)
+hs.hotkey.bind('leftCmd shift', 'l', increaseWindow, nil, increaseWindow)
+hs.hotkey.bind('leftCmd shift', 'h', decreaseWindow, nil, decreaseWindow)
 
 for i = 1, 5 do
   key = tostring(i)
@@ -45,3 +47,4 @@ hs.hotkey.bind('leftCmd shift', 'n', reload_dsearch)
 
 require('save')
 hs.hotkey.bind('leftCmd', 's', save)
+hs.hotkey.bind('leftCmd', 'p', plumb)
