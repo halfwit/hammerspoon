@@ -26,13 +26,13 @@ end
 function increaseWindow()
     local window = hs.window.frontmostWindow()
     local size = window:size()
-    size.w = size.w + 8
+    size.w = size.w + 10
     window:setSize(size)
 end
 
 function decreaseWindow()
     local window = hs.window.frontmostWindow()
     local size = window:size()
-    size.w = size.w - 8
+    size.w = size.w - 10
     window:setSize(size)
 end
