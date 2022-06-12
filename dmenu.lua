@@ -4,7 +4,6 @@
 
 -- Stash command paths for future
 local dctl = hs.execute('which dctl', true):gsub("%s+", " ")
-local choose = hs.execute('which choose', true):gsub("%s+", " ")
 
 function _dmenu_populate()
   -- Loop through each item in the system profiler, and add to list

@@ -15,13 +15,12 @@ local WORKDIR = '/Work/personal'
 
 -- Stash command paths for future, scrub out newlines
 local dctl = hs.execute('which dctl', true):gsub("%s+", " ")
-local choose = hs.execute('which choose', true):gsub("%s+", " ")
 local plumb = hs.execute('which plumb', true):gsub("%s+", " ")
 
-function _dsearch_populate()
+local function _dsearch_populate()
     -- Write commands to a dctl
     local loader = io.popen(dctl .. ' -t search add', 'w')
-        local finder = io.popen('/usr/bin/find ' .. os.getenv("HOME") .. WORKDIR .. ' -type f -not -path "*/node_modules*" -not -path "*/\\.git*" | /usr/bin/sed "s|/Users/halfwit/|~/|"')
+    local finder = io.popen('/usr/bin/find ' .. os.getenv("HOME") .. WORKDIR .. ' -type f -not -path "*/node_modules*" -not -path "*/\\.git*" | /usr/bin/sed "s|/Users/halfwit/|~/|"')
     loader:write('!yt\n')
     loader:write('!g\n')
     loader:write('!s\n')
@@ -37,8 +36,8 @@ function _dsearch_populate()
     finder:close()
 end
 
-function _dsearch_load()
-    entries = {}
+local function _dsearch_load()
+    local entries = {}
     local loader = io.popen(dctl .. ' -t search list')
     for line in loader:lines() do
         table.insert(entries, {
@@ -53,9 +52,9 @@ function _dsearch_load()
 end
 
 -- Run plumber eventually
-function _dsearch_plumb(selection)
+local function _dsearch_plumb(selection)
     if(selection) then
-        local runner = io.popen(plumb .. ' -', 'w')
+        local runner = io.popen(plumb .. ' -i', 'w')
         runner:write(selection.text)
         runner:flush()
         runner:close()
@@ -65,6 +64,7 @@ end
 -- Set up our chooser
 local chooser = hs.chooser.new(_dsearch_plumb)
 chooser:choices(_dsearch_load)
+chooser:enableDefaultForQuery(true);
 
 function dsearch()
     chooser:query(nil)
